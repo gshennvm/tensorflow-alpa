@@ -44,6 +44,8 @@ void AddCallBackReleasingBuffer(se::Stream *stream, PyBuffer::object &buf_obj) {
 StatusOr<ncclDataType_t> ToNcclDataType(PrimitiveType element_type) {
   // FIXME(yonghao): throw an error for other cases
   switch (element_type) {
+    case BF16:
+      return ncclBfloat16;
     case S8:
       return ncclInt8;
     case PRED:
@@ -90,6 +92,8 @@ int SizeOfType(ncclDataType_t element_type) {
       return 4;
     case ncclFloat64:
       return 8;
+    case ncclBfloat16:
+      return 2;
     default:
       return 4;
   }
