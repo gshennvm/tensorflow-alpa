@@ -500,6 +500,7 @@ def _find_nccl_config(base_paths, required_version):
   library_path = _find_library(base_paths, "nccl", nccl_version)
 
   print("###### DEBUG: header path {} header_version {} nccl_version {} library_path {}".format(header_path, header_version, nccl_version, library_path))
+  exit(1)
 
   return {
       "nccl_version": nccl_version,
